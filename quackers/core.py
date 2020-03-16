@@ -29,6 +29,10 @@ ux_students = Airtable(os.environ.get('UX_AIRTABLE_BASE_ID'), 'Students')
 ux_instructors = Airtable(os.environ.get('UX_AIRTABLE_BASE_ID'), 'Instructors')
 ux_questions = Airtable(os.environ.get('UX_AIRTABLE_BASE_ID'), 'Quackers Questions')
 
+ct_students = Airtable(os.environ.get('CT_AIRTABLE_BASE_ID'), 'Students')
+ct_instructors = Airtable(os.environ.get('CT_AIRTABLE_BASE_ID'), 'Instructors')
+ct_questions = Airtable(os.environ.get('CT_AIRTABLE_BASE_ID'), 'Quackers Questions')
+
 logger = logging.getLogger('gunicorn.error')
 
 
@@ -83,6 +87,12 @@ def post_to_airtable(user_id, slack_username, channel, channel_map, question, in
         search_options = [
             {'table': ux_students, 'is_student': True},
             {'table': ux_instructors, 'is_student': False},
+        ]
+     elif base == "ct":
+        airtable_target = ux_questions
+        search_options = [
+            {'table': ct_students, 'is_student': True},
+            {'table': ct_instructors, 'is_student': False},
         ]
     else:
         raise Exception(f"No search options found for Airtable base {base}")
