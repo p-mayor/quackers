@@ -14,6 +14,7 @@ from quackers.helpers import ChannelMap
 
 UX = 'ux'
 SE = 'se'
+CT = 'ct'
 
 channel_map = ChannelMap(slack_conn=client)
 
@@ -28,7 +29,10 @@ channels = [
     ("ux-6-remote", "ux-triage-uxd", UX),
     ("ux-6-indy", "ux-triage-uxd", UX),
     ("ux-4-indy", "ux-triage-uie", UX),
-    ("ux-4-remote", "ux-triage-uie", UX)
+    ("ux-4-remote", "ux-triage-uie", UX),
+    ("amazon-block1-march2020", "amazon-triage", CT),
+    ("amazon-block2-march2020", "amazon-triage", CT),
+    
 ]
 for channel in channels:
     channel_map.add_channel(
@@ -44,7 +48,8 @@ emoji_list = [
     'spinning',
     'party-parrot',
     'heykirbyhey',
-    'capemario'
+    'capemario',
+    'brule-wink'
 ]
 # *********************************************
 # DO NOT EDIT BEYOND THIS POINT
