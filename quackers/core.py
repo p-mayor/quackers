@@ -89,7 +89,7 @@ def post_to_airtable(user_id, slack_username, channel, channel_map, question, in
             {'table': ux_instructors, 'is_student': False},
         ]
      elif base == "ct":
-        airtable_target = ux_questions
+        airtable_target = ct_questions
         search_options = [
             {'table': ct_students, 'is_student': True},
             {'table': ct_instructors, 'is_student': False},
